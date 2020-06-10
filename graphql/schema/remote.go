@@ -28,9 +28,13 @@ import (
 	"github.com/vektah/gqlparser/v2/ast"
 )
 
+type IntrospectionRequest struct {
+	Query     string `json:"query"`
+}
+
 // introspectRemoteSchema introspectes remote schema
 func introspectRemoteSchema(url string, headers http.Header) (*introspectedSchema, error) {
-	param := &Request{
+	param := &IntrospectionRequest{
 		Query: introspectionQuery,
 	}
 
